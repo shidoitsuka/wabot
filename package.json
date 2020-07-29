@@ -1,0 +1,15 @@
+{
+  "name": "wabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shidoitsuka",
+  "license": "MIT",
+  "dependencies": {
+    "@open-wa/wa-automate": "^1.9.105",
+    "@open-wa/wa-decrypt": "^2.0.1"
+  }
+}
