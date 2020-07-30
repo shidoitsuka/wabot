@@ -3,9 +3,11 @@ const uaOverride = "WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_
 
 exports.run = async (msg, bot) => {
     if (msg.quotedMsgObj == null || msg.quotedMsgObj.type != "image") return bot.sendText(msg.from, "Please quote a picture!");
-    bot.sendText(msg.from, "*Generating...*");
+    const waiting = await bot.sendText(msg.from, "*Generating...*");
     const media = await decryptMedia(msg.quotedMsgObj, uaOverride);
-    bot.sendImageAsSticker(msg.from, `data:image/jpeg;base64,${media.toString('base64')}`);
+    bot.sendImageAsSticker(msg.from, `data:image/jpeg;base64,${media.toString('base64')}`).then((_) => {
+        bot.deleteMessage(msg.from, waiting);
+    });
 }
 
 exports.help = {
