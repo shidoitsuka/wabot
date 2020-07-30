@@ -3,7 +3,7 @@ const { readdir } = require("fs")
 exports.run = (msg, bot) => {
     // working on this one
     let tmpMessage = [];
-    fs.readdir("./", (e, files) => {
+    readdir("./commands/", (e, files) => {
         console.log(files)
         if (e) console.error(e);
         console.log(files)
@@ -13,6 +13,7 @@ exports.run = (msg, bot) => {
             console.log("jsFile")
             const cmdFile = require(`./${jsFile}`);
             let tmpFile = {};
+            tmpFile[jsFile.replace(".js", "")] = {};
             tmpFile[jsFile.replace(".js", "")].name = cmdFile.help.name;
             tmpFile[jsFile.replace(".js", "")].description = cmdFile.help.description;
             tmpFile[jsFile.replace(".js", "")].usage = cmdFile.help.usage;
