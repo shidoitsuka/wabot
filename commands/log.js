@@ -1,5 +1,8 @@
 exports.run = (msg, bot) => {
-    console.log(msg);
+    bot.sendText(msg.from, "Test").then(m => {
+        console.log(msg);
+        bot.deleteMessage(msg.from, m);
+    });
 }
 
 exports.help = {
