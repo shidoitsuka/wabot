@@ -1,7 +1,14 @@
 const wa = require("@open-wa/wa-automate");
-const { decryptMedia } = require("@open-wa/wa-decrypt");
-const uaOverride = "WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
+const fs = require("fs")
 const prefix = "!";
+const availableCommands = new Set();
+
+fs.readdir("./commands", (e, files) => {
+    if (e) return console.error(e);
+    files.forEach(commandFile => {
+        availableCommands.add(commandFile.replace(".js", ""));
+    });
+});
 
 wa.create().then(bot => start(bot));
 
@@ -10,10 +17,8 @@ function start(bot) {
         if (!msg.body.startsWith(prefix)) return;
         const args = msg.body.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
-        if (command == "ping") bot.sendText(msg.from, "🏓 | Pong!");
-        if (command == "sticker") {
-            if (msg.quotedMsgObj == null || msg.quotedMsgObj.type != "image") return bot.sendText(msg.from, "Please quote a picture!");
-            decryptMedia(msg.quotedMsgObj, uaOverride).then((media) => bot.sendImageAsSticker(msg.from, `data:image/jpeg;base64,${media.toString('base64')}`));
-        }
+
+        if (availableCommands.has(command)) require(`./commands/${command}`).run(msg, bot);
+
     });
 }
