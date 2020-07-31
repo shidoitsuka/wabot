@@ -3,11 +3,13 @@
 > I'm not responsible if you get banned for using this app!
 
 ## Available Commands
-| Command | Description |
-|------|-------------|
-| Ping | Checks wheter the bot is online or not |
-| Sticker | Sticker-ify a photo |
-| | Much more soon~ |
+| Command | Description | Screenshot |
+|------|-------------| --------------|
+| Ping | Checks wheter the bot is online or not | ![Ping](https://raw.githubusercontent.com/shidoitsuka/wabot/master/assets/screenshot/ping.png) |
+| Sticker | Sticker-ify a photo | ![Sticker](https://raw.githubusercontent.com/shidoitsuka/wabot/master/assets/screenshot/sticker.png) |
+| Help | Get help info | ![Help](https://raw.githubusercontent.com/shidoitsuka/wabot/master/assets/screenshot/help.png) |
+| Math | Calculate something | ![Math](https://raw.githubusercontent.com/shidoitsuka/wabot/master/assets/screenshot/math.png) |
+| Much more soon~ | | |
 
 ## Features
 | Name | Description |
