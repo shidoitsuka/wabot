@@ -14,7 +14,7 @@ exports.run = (msg, bot, args) => {
     });
     if (!args[0]) {
       // prettier-ignore
-      bot.sendText(msg.from, `Available commands : ${Object.keys(tmpFile).join(", ")}\n\nYou can run *_help <command name>* to show advanced help._`);
+      bot.sendText(msg.from, `Available commands : ${Object.keys(tmpFile).join(", ")}\n\nYou can run _*help <command name>* to show advanced help._`);
     } else {
       const commandName = args[0];
       const { name, description, usage } = require(`./${commandName}.js`).help;
